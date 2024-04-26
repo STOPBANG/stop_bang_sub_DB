@@ -1,11 +1,45 @@
 const Bookmark = require('../database/models/tables/bookmark');
 
 module.exports = {
-  // 북마크 아이디로 찾기
+  // id는 resident_r_id
   findById: async (req, res) => {
-
+    const resident_r_id = req.body.resident_r_id;
+    try {
+      const bookmark = await Bookmark.findAll({
+        where: {
+          resident_r_id: resident_r_id
+        }
+      });
+      if (bookmark) {
+        return res.json(bookmark);
+      }
+      return res.json({});
+    } catch (error) {
+      console.log('[error] sub DB : ', error);
+      return res.redirect('/');
+    }
   },
-  
+
+  // id는 ra_regno, resident_r_id
+  findByIdnRegno: async (req, res) => {
+    const body = req.body;
+    try {
+      const bookmark = await Bookmark.findAll({
+        where: {
+          agentList_ra_regno: body.agentList_ra_regno,
+          resident_r_id: body.resident_r_id
+        }
+      });
+      if (bookmark) {
+        return res.json(bookmark);
+      }
+      return res.json({});
+    } catch (error) {
+        console.log('[error] sub DB : ', error);
+        return res.redirect('/');
+    }
+  },
+
   // 북마크 업데이트
   update: async (req, res) => {
     const body = req.body;
