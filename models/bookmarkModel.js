@@ -2,7 +2,7 @@ const Bookmark = require('../database/models/tables/bookmark');
 
 module.exports = {
   // id는 resident_r_id
-  findById: async (req, res) => {
+  findALLById: async (req, res) => {
     const resident_r_id = req.body.resident_r_id;
     try {
       const bookmark = await Bookmark.findAll({
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   // id는 ra_regno, resident_r_id
-  findByIdnRegno: async (req, res) => {
+  findALLByIdnRegno: async (req, res) => {
     const body = req.body;
     try {
       const bookmark = await Bookmark.findAll({
