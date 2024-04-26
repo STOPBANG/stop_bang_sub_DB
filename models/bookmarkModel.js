@@ -3,11 +3,11 @@ const Bookmark = require('../database/models/tables/bookmark');
 module.exports = {
   // id는 resident_r_id
   findALLById: async (req, res) => {
-    const resident_r_id = req.body.resident_r_id;
+    const r_id = req.body.r_id;
     try {
       const bookmark = await Bookmark.findAll({
         where: {
-          resident_r_id: resident_r_id
+          resident_r_id: r_id
         }
       });
       if (bookmark) {
@@ -26,8 +26,8 @@ module.exports = {
     try {
       const bookmark = await Bookmark.findAll({
         where: {
-          agentList_ra_regno: body.agentList_ra_regno,
-          resident_r_id: body.resident_r_id
+          agentList_ra_regno: body.ra_regno,
+          resident_r_id: body.r_id
         }
       });
       if (bookmark) {
@@ -48,11 +48,11 @@ module.exports = {
         {
           bm_id: body.bm_id,
           agentList_ra_regno: body.agentList_ra_regno,
-          resident_r_id: body.resident_r_id
+          resident_r_id: body.r_id
         },
         {
           where: {
-            resident_r_id: body.resident_r_id
+            resident_r_id: body.r_id
           }
         }
       );
@@ -65,7 +65,7 @@ module.exports = {
 
   // 북마크 삭제
   delete: async (req, res) => {
-    const bm_id = req.body.r_id;
+    const bm_id = req.body.bm_id;
     try {
       await Report.destroy({ where: {bm_id: bm_id} });
       return res.json({});
