@@ -13,7 +13,8 @@ const sequelize = new Sequelize(
     config.database, 
     config.username, 
     config.password, 
-    config); 
+    config
+); 
 
 db.sequelize = sequelize;
 db.OpenedReview = OpenedReview;
