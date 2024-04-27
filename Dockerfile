@@ -6,5 +6,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD npx wait-port report_db:3306 && \
+CMD npx wait-port sub_db:3306 && \
   npm run start
