@@ -7,7 +7,7 @@ router.get('/findAllById/:r_id', bookmarkModel.findALLById);
 // resident_r_id, ra_regno로 북마크 검색
 router.get('/findAllByIdnRegno/:r_id/:ra_regno',bookmarkModel.findALLByIdnRegno);
 // 북마크 업데이트
-router.put('/update', bookmarkModel.update);
+router.post('/create', bookmarkModel.create);
 // 북마크 삭제
 router.post('/delete', bookmarkModel.delete);
 

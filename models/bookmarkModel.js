@@ -41,10 +41,10 @@ module.exports = {
   },
 
   // 북마크 업데이트 및 삭제
-  update: async (req, res) => {
+  create: async (req, res) => {
     const body = req.body;
     try {
-      const bookmark = await Bookmark.update(
+      const bookmark = await Bookmark.create(
         {
           agentList_ra_regno: body.ra_regno,
           resident_r_id: body.r_id
