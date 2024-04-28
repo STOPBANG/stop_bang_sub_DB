@@ -21,7 +21,7 @@ module.exports = class Bookmark extends Sequelize.Model {
         {
             sequelize, // Sequelize 인스턴스 지정
             timestamps: false, // Sequelize가 모델에 타임스탬프(createdAt 및 updatedAt)를 포함하지 않음
-            underscored: true, // 낙타 표기법 속성 이름을 스네이크 케이스로 변환
+            underscored: false, // 낙타 표기법 속성 이름을 스네이크 케이스로 변환
             modelName: 'bookmark',
             tableName: "bookmark",
             paranoid: false, // 레코드를 실제로 삭제하지 않고 삭제로 표시하는 소프트 삭제 false
