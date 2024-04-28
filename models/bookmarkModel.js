@@ -22,12 +22,11 @@ module.exports = {
 
   // id는 ra_regno, resident_r_id
   findALLByIdnRegno: async (req, res) => {
-    const body = req.body;
     try {
       const bookmark = await Bookmark.findAll({
         where: {
-          agentList_ra_regno: body.ra_regno,
-          resident_r_id: body.r_id
+          agentList_ra_regno: req.params.ra_regno,
+          resident_r_id: req.params.r_id
         }
       });
       if (bookmark) {
