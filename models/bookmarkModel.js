@@ -40,14 +40,13 @@ module.exports = {
     }
   },
 
-  // 북마크 업데이트
+  // 북마크 업데이트 및 삭제
   update: async (req, res) => {
     const body = req.body;
     try {
       const bookmark = await Bookmark.update(
         {
-          bm_id: body.bm_id,
-          agentList_ra_regno: body.agentList_ra_regno,
+          agentList_ra_regno: body.ra_regno,
           resident_r_id: body.r_id
         },
         {
@@ -65,12 +64,14 @@ module.exports = {
 
   // 북마크 삭제
   delete: async (req, res) => {
-    const bm_id = req.body.bm_id;
+    const body = req.body;
     try {
-      await Report.destroy({ where: {bm_id: bm_id} });
+      await Report.destroy({ where: { agentList_ra_regno: body.ra_regno, resident_r_id: body.r_id}
+       });
       return res.json({});
     } catch (error) {
-      return error;
+      console.log('[error] sub DB : ', error);
+      return res.redirect('/');
     }
 
   }
