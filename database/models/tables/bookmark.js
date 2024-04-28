@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class OpenedReview extends Sequelize.Model {
+module.exports = class Bookmark extends Sequelize.Model {
     static init(sequelize) {
         return super.init( { // init 메서드: 모델 정의를 초기화, 데이터베이스에 연결된 Sequelize 인스턴스를 나타내는 sequelize 객체를 인수로 함
             bm_id: {

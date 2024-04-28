@@ -1,5 +1,4 @@
 const Report = require('../database/models/tables/report');
-const { findALLById } = require('./bookmarkModel');
 
 module.exports = {
   findAllById: async (req, res) => {
