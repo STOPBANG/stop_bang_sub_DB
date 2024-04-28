@@ -44,20 +44,14 @@ module.exports = {
   create: async (req, res) => {
     const body = req.body;
     try {
-      const bookmark = await Bookmark.create(
-        {
+      const bookmark = await Bookmark.create({
           agentList_ra_regno: body.ra_regno,
           resident_r_id: body.r_id
-        },
-        {
-          where: {
-            resident_r_id: body.r_id
-          }
         }
       );
       return res.json(bookmark);
     } catch (error) {
-        console.log('[error] sub DB : ', error);
+        console.log('[error] sub DB: ', error);
         return res.redirect('/');
     }
   },
@@ -66,7 +60,10 @@ module.exports = {
   delete: async (req, res) => {
     const body = req.body;
     try {
-      await Report.destroy({ where: { agentList_ra_regno: body.ra_regno, resident_r_id: body.r_id}
+      await Report.destroy({ 
+        where: { 
+          bm_id: body.bm_id
+        }
        });
       return res.json({});
     } catch (error) {
