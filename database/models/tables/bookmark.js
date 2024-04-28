@@ -22,8 +22,8 @@ module.exports = class Bookmark extends Sequelize.Model {
             sequelize, // Sequelize 인스턴스 지정
             timestamps: false, // Sequelize가 모델에 타임스탬프(createdAt 및 updatedAt)를 포함하지 않음
             underscored: true, // 낙타 표기법 속성 이름을 스네이크 케이스로 변환
-            modelName: 'report',
-            tableName: "report",
+            modelName: 'bookmark',
+            tableName: "bookmark",
             paranoid: false, // 레코드를 실제로 삭제하지 않고 삭제로 표시하는 소프트 삭제 false
             charset: 'utf8mb4', // 테이블의 문자 집합을 지정 - 이모지 및 기타 특수 문자를 저장할 수 있도록 'utf8mb4'로 설정
             collate: 'utf8mb4_general_ci', // 테이블의 콜레이션을 지정 - 유니코드 대소문자 구분 정렬을 나타내는 'utf8mb4_general_ci'로 설정
