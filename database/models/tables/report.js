@@ -16,7 +16,7 @@ module.exports = class Report extends Sequelize.Model {
                 allowNull: false,
             },
             reason: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: true,
                 defaultValue: "no reason",
             }
