@@ -38,9 +38,9 @@ module.exports = {
 
 
   delete: async (req, res) => {
-    const r_id = req.body.r_id;
+    const rv_id = req.body.rv_id;
     try {
-      await Report.destroy({ where: {r_id: r_id} });
+      await Report.destroy({ where: {rv_id: rv_id} });
       return res.json({});
     } catch (error) {
       console.log('[error] sub DB - report : ', error);
