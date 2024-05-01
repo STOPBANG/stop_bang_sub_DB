@@ -2,7 +2,7 @@ const Report = require('../database/models/tables/report');
 
 module.exports = {
   findAllById: async (req, res) => {
-    const rv_id = req.body.rv_id;
+    const rv_id = req.params.rv_id;
     try {
       const report = await Report.findAll({
         where: {
@@ -19,12 +19,12 @@ module.exports = {
   },
 
   findOne: async (req, res) => {
-    const body = req.body;
+    const params = req.params;
     try {
       const report = await Report.findOne({
         where: {
-          repo_rv_id: body.rv_id,
-          reporter: body.reporter
+          repo_rv_id: params.rv_id,
+          reporter: params.reporter
         }
       });
       if (report) {
