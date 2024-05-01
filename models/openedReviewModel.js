@@ -50,5 +50,16 @@ module.exports = {
       console.log('[error] sub DB : ', err);
       return res.redirect('/');
     }
+  },
+
+  delete: async (req, res) => {
+    const rv_id = req.body.rv_id;
+    try {
+      await Report.destroy({ where: {review_rv_id: rv_id} });
+      return res.json({});
+    } catch (error) {
+      console.log('[error] sub DB - op_review(delete) : ', error);
+      return res.redirect('/');
+    }
   }
 }
