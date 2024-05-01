@@ -3,7 +3,7 @@ const router = express.Router();
 const reportModel = require('../models/reportModel.js');
 
 // 리뷰 아이디로 신고 테이블에서 검색
-router.get('/findAllByID:/rv_id', reportModel.findAllById);
+router.get('/findAllByID/:rv_id', reportModel.findAllById);
 // 리뷰 아이디, 신고자 이름으로 검색
 router.get('/findOne/:rv_id/:reporter', reportModel.findOne);
 // sys_regno로 검색
