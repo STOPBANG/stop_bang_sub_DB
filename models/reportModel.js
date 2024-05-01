@@ -1,6 +1,18 @@
 const Report = require('../database/models/tables/report');
 
 module.exports = {
+  findAll: async (req, res) => {
+    try {
+      const report = await Report.findAll();
+      if (report) {
+        return res.json(report);
+      }
+    } catch(error) {
+      console.log('[error] sub DB - report(findAll) : ', error);
+      return res.redirect('/');
+    }
+  },
+
   findAllById: async (req, res) => {
     const rv_id = req.params.rv_id;
     try {
@@ -13,7 +25,7 @@ module.exports = {
         return res.json(report);
       }
     } catch(error) {
-      console.log('[error] sub DB - report : ', error);
+      console.log('[error] sub DB - report(findAllById) : ', error);
       return res.redirect('/');
     }
   },
@@ -31,7 +43,7 @@ module.exports = {
         return res.json(report);
       }
     } catch(error) {
-      console.log('[error] sub DB - report : ', error);
+      console.log('[error] sub DB - report(findOne) : ', error);
       return res.redirect('/');
     }
   },
@@ -48,7 +60,7 @@ module.exports = {
         return res.json(report);
       }
     } catch(error) {
-      console.log('[error] sub DB - report : ', error);
+      console.log('[error] sub DB - report(findAllBySysRegno) : ', error);
       return res.redirect('/');
     }
   },
@@ -69,7 +81,7 @@ module.exports = {
 
       return res.json({});
     } catch (error) {
-      console.log('[error] sub DB - report : ', error);
+      console.log('[error] sub DB - report(create) : ', error);
       return res.redirect('/');
     }
   },
@@ -80,7 +92,7 @@ module.exports = {
       await Report.destroy({ where: {rv_id: rv_id} });
       return res.json({});
     } catch (error) {
-      console.log('[error] sub DB - report : ', error);
+      console.log('[error] sub DB - report(delete) : ', error);
       return res.redirect('/');
     }
   }

@@ -12,5 +12,7 @@ router.get('/findAllBySysRegno/:sys_regno', reportModel.findAllBySysRegno);
 router.post('/delete', reportModel.delete);
 // 신고 생성
 router.post('/create', reportModel.create);
+// 모든 신고 데이터 가져오기
+router.get('/getAllReports', reportModel.findAll);
 
 module.exports = router
