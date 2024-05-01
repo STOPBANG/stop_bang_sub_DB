@@ -3,7 +3,7 @@ const Bookmark = require('../database/models/tables/bookmark');
 module.exports = {
   // id는 resident_r_id
   findALLById: async (req, res) => {
-    const r_id = req.body.r_id;
+    const r_id = req.params.r_id;
     try {
       const bookmark = await Bookmark.findAll({
         where: {
