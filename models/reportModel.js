@@ -36,6 +36,23 @@ module.exports = {
     }
   },
 
+  findAllBySysRegno: async (req, res) => {
+    const params = req.params;
+    try {
+      const report = await Report.findAll({
+        where: {
+          sys_regno: params.sys_regno
+        }
+      });
+      if (report) {
+        return res.json(report);
+      }
+    } catch(error) {
+      console.log('[error] sub DB - report : ', error);
+      return res.redirect('/');
+    }
+  },
+
   create: async (req, res) => {
     const repo_rv_id = req.body.rv_id;
     const reporter = req.body.reporter;

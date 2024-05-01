@@ -11,6 +11,10 @@ module.exports = class Report extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
+            sys_regno: {
+                type: Sequelize.STRING(45),
+                allowNull: false,
+            },
             reportee: {
                 type: Sequelize.STRING(45),
                 allowNull: false,

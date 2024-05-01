@@ -6,6 +6,8 @@ const reportModel = require('../models/reportModel.js');
 router.get('/findAllByID:/rv_id', reportModel.findAllById);
 // 리뷰 아이디, 신고자 이름으로 검색
 router.get('/findOne/:rv_id/:reporter', reportModel.findOne);
+// sys_regno로 검색
+router.get('/findAllBySysRegno/:sys_regno', reportModel.findAllBySysRegno);
 // 신고 삭제
 router.post('/delete', reportModel.delete);
 // 신고 생성
