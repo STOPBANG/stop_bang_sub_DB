@@ -66,17 +66,15 @@ module.exports = {
   },
 
   create: async (req, res) => {
-    const repo_rv_id = req.body.rv_id;
-    const reporter = req.body.reporter;
-    const reportee = req.body.reportee;
-    const reason = req.body.reason;
+    const body = req.body;
 
     try {
       await Report.create({
-        repo_rv_id: repo_rv_id,
-        reporter: reporter,
-        reportee: reportee,
-        reason: reason
+        repo_rv_id: body.repo_rv_id,
+        reporter: body.reporter,
+        reportee: body.reportee,
+        reason: body.reason,
+        sys_regno: body.sys_regno
       });
 
       return res.json({});
