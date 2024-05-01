@@ -36,6 +36,26 @@ module.exports = {
     }
   },
 
+  create: async (req, res) => {
+    const repo_rv_id = req.body.rv_id;
+    const reporter = req.body.reporter;
+    const reportee = req.body.reportee;
+    const reason = req.body.reason;
+
+    try {
+      await Report.create({
+        repo_rv_id: repo_rv_id,
+        reporter: reporter,
+        reportee: reportee,
+        reason: reason
+      });
+
+      return res.json({});
+    } catch (error) {
+      console.log('[error] sub DB - report : ', error);
+      return res.redirect('/');
+    }
+  },
 
   delete: async (req, res) => {
     const rv_id = req.body.rv_id;

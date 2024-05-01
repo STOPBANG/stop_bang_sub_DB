@@ -8,5 +8,7 @@ router.get('findAllByID:/rv_id', reportModel.findAllById);
 router.get('findOne/:rv_id/:reporter', reportModel.findOne);
 // 신고 삭제
 router.post('/delete', reportModel.delete);
+// 신고 생성
+router.post('/create', reportModel.create);
 
 module.exports = router
