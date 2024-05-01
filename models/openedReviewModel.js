@@ -1,6 +1,22 @@
 const OpenedReview = require('../database/models/tables/openedReview');
 
 module.exports = {
+  // 회원의 opened_review 모두 찾기
+  findAllById: async (req, res) => {
+    const r_id = req.params.r_id; // 입주민
+
+    try {
+      const opened_review = await OpenedReview.findAll({ where: {resident_r_id: r_id} });
+      if(opened_review) {
+        return res.json(opened_review);
+      }
+      return res.json({});
+    } catch (error) {
+      console.log('[error] sub DB : ', error);
+      return res.redirect('/');
+    }
+  },
+
   // opened_review 찾기
   findById: async (req, res) => {
     const rv_id = req.body.rv_id; // 리뷰
