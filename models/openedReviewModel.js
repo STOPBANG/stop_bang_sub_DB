@@ -47,7 +47,7 @@ module.exports = {
       }
       return res.json({});
     } catch (error) {
-      console.log('[error] sub DB : ', err);
+      console.log('[error] sub DB : ', error);
       return res.redirect('/');
     }
   },
