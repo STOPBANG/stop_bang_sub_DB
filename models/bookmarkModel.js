@@ -59,7 +59,7 @@ module.exports = {
   delete: async (req, res) => {
     const body = req.body;
     try {
-      await Report.destroy({ 
+      await Bookmark.destroy({ 
         where: { 
           bm_id: body.bm_id
         }
