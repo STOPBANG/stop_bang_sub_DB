@@ -25,7 +25,7 @@ module.exports = {
     try {
       const bookmark = await Bookmark.findAll({
         where: {
-          agentList_ra_regno: req.params.ra_regno,
+          agentList_ra_regno: req.params.sys_regno,
           resident_r_id: req.params.r_id
         }
       });
@@ -44,7 +44,7 @@ module.exports = {
     const body = req.body;
     try {
       const bookmark = await Bookmark.create({
-          agentList_ra_regno: body.ra_regno,
+          agentList_ra_regno: body.sys_regno,
           resident_r_id: body.r_id
         }
       );
@@ -61,7 +61,8 @@ module.exports = {
     try {
       await Bookmark.destroy({ 
         where: { 
-          bm_id: body.bm_id
+          agentList_ra_regno: body.sys_regno,
+          resident_r_id: body.r_id
         }
        });
       return res.json({});
