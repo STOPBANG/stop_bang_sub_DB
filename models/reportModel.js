@@ -41,6 +41,8 @@ module.exports = {
       });
       if (report) {
         return res.json(report);
+      } else {
+        return res.json({}); // 조회된 결과가 없을 때 null 반환
       }
     } catch(error) {
       console.log('[error] sub DB - report(findOne) : ', error);
@@ -48,7 +50,6 @@ module.exports = {
     }
   },
 
-<<<<<<< Updated upstream
   findAllBySysRegno: async (req, res) => {
     const params = req.params;
     try {
@@ -78,13 +79,6 @@ module.exports = {
         sys_regno: body.sys_regno
       });
 
-=======
-
-  delete: async (req, res) => {
-    const rv_id = req.body.rv_id;
-    try {
-      await Report.destroy({ where: {rv_id: rv_id} });
->>>>>>> Stashed changes
       return res.json({});
     } catch (error) {
       console.log('[error] sub DB - report(create) : ', error);
