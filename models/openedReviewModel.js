@@ -1,6 +1,20 @@
 const OpenedReview = require('../database/models/tables/openedReview');
 
 module.exports = {
+
+  findAll: async () => {
+    try{
+      const opened_reveiw = await OpenedReview.findAll();
+      if (opened_reveiw) {
+        return opened_reveiw;
+      }
+      return null;
+    } catch(error){
+      console.log('[error] sub DB : ', error);
+      return error;
+    }
+  },
+
   // 회원의 opened_review 모두 찾기
   findAllById: async (req, res) => {
     const r_id = req.params.r_id; // 입주민
