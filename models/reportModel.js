@@ -50,6 +50,27 @@ module.exports = {
     }
   },
 
+  // 신고자 이름으로 검색
+  // router.get('/findOne/:reporter', reportModel.findOneByReporter);
+  findAllByReporter: async (req, res) => {
+    const reporter = req.params.reporter;
+    try {
+      const report = await Report.findAll({
+        where: {
+          reporter: reporter
+        }
+      });
+      if (report) {
+        return res.json(report);
+      } else {
+        return res.json({}); // 조회된 결과가 없을 때 null 반환
+      }
+    } catch(error) {
+      console.log('[error] sub DB - report(findAllByReporter) : ', error);
+      return res.redirect('/');
+    }
+  },
+
   findAllBySysRegno: async (req, res) => {
     const params = req.params;
     try {
