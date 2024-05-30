@@ -16,9 +16,6 @@ const bookmarkRouter = require ('./routers/bookmarkRouter.js');
 const openedReviewRouter = require ('./routers/openedReviewRouter.js');
 const reportRouter = require('./routers/reportRouter.js');
 
-const receiveOpenedReviewQueue = require('./rabbit_opened_review.js');
-receiveOpenedReviewQueue.receiveConnection();
-
 app.use('/db/bookmark', bookmarkRouter);
 app.use('/db/openedReview', openedReviewRouter);
 app.use('/db/report', reportRouter);

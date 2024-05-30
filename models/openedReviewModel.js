@@ -2,19 +2,6 @@ const OpenedReview = require('../database/models/tables/openedReview');
 
 module.exports = {
 
-  findAll: async () => {
-    try{
-      const opened_reveiw = await OpenedReview.findAll();
-      if (opened_reveiw) {
-        return opened_reveiw;
-      }
-      return null;
-    } catch(error){
-      console.log('[error] sub DB : ', error);
-      return error;
-    }
-  },
-
   // 회원의 opened_review 모두 찾기
   findAllById: async (req, res) => {
     const r_id = req.params.r_id; // 입주민
@@ -49,7 +36,7 @@ module.exports = {
   },
 
   // opened_review db에 추가하기 - 직접메시징
-  /*
+  
   create: async (req, res) => {
     const body = req.body;
     try {
@@ -65,15 +52,6 @@ module.exports = {
       console.log('[error] sub DB : ', error);
       return res.redirect('/');
     }
-  },
-*/
-
-// opened_review db에 추가하기 - 간접메시징
-  create: async (msg) => {
-    await OpenedReview.create({
-      resident_r_id: msg.resident_r_id,
-      review_rv_id: msg.rv_id
-    });
   },
 
   delete: async (req, res) => {
