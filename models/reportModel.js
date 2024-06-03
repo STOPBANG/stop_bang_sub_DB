@@ -88,19 +88,17 @@ module.exports = {
     }
   },
 
-  create: async (req, res) => {
-    const body = req.body;
-
+  create: async (report) => {
     try {
       await Report.create({
-        repo_rv_id: body.repo_rv_id,
-        reporter: body.reporter,
-        reportee: body.reportee,
-        reason: body.reason,
-        sys_regno: body.sys_regno
+        repo_rv_id: report.repo_rv_id,
+        reporter: report.reporter,
+        reportee: report.reportee,
+        reason: report.reason,
+        sys_regno: report.sys_regno
       });
 
-      return res.json({});
+      // return res.json({});
     } catch (error) {
       console.log('[error] sub DB - report(create) : ', error);
       return res.redirect('/');

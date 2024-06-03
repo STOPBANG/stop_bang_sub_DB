@@ -20,6 +20,9 @@ app.use('/db/bookmark', bookmarkRouter);
 app.use('/db/openedReview', openedReviewRouter);
 app.use('/db/report', reportRouter);
 
+const rabbit = require('./rabbit_report.js');
+rabbit.recieveConnection();
+
 app.listen(port, () => {
   console.log(`Sub DB app listening on port ${port}`)
 })
