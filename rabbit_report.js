@@ -4,7 +4,13 @@ const reportModel = require('./models/reportModel.js');
 module.exports = {
     recieveConnection: async () => {
         try {
-            const connection = await amqp.connect(process.env.RABBIT);
+            const connection = await amqp.connect({
+                protocol: 'amqp',
+                hostname: process.env.RABBITMQ_HOST,
+                username: process.env.RABBITMQ_ID,
+                password: process.env.RABBITMQ_PASSWORD,
+                port: process.env.RABBITMQ_PORT,
+            });
             const messageChannel = await connection.createChannel();
             const queue = 'reportQueue';
 
